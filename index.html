@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Created by garybracket on 06/24/2020 for all those Socom junkies who need their audio fixes.
+	 This started as a solo project, but as I built it, I built it out into an organized template
+	 so it can be re-used for more soundboards. Nothing exciting to see here.
+
+	 Steam: garybracket
+	 SVDL: garybracket
+	 Socom: GaRy]
+	 Discord: Send Message on Steam
+
+
+
+v1.0 - Initial release.
+v1.1 - Added looping sound effects.
+v1.2 - Added navigation bar.
+v1.3 - Added new page "Highlights"
+v1.4 - Added new page "Home"
+v1.5 - Restructured site a bit, added external style sheet to mass-edit site when the time comes.
+-->
+
+
+<head>
+<meta charset="utf-8"/>
+<meta name="description" content="site by garyproductions. No iLLusion Coming Soon...">
+<meta name="keywords" content="Socom, Socom 2, garybracket, gary], newb Crushers, NC, Socom 3, Socom CA, H-Hour, H Hour, World's Elite, Worlds Elite, Socom Soundboard, Socom 2 Soundboard, Soundboard, Yonkers, bobby satchel, shadow_wolfx2o, Gary, gaming, ps2 gaming, ps2, socom 2 ps2, games like socom, third person shooter, third-person shooter, tps, fps, first person shooter, first-person shooter">
+<meta name="author" content="garybracket">
+<meta name="google-site-verification" content="NW99Yefz89uLajZgtge-YVcP1dEBBT_PCgN2jN7wZ0I" />
+<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
+<title>No iLLusion COMING SOON...</title>
+
+<!-- JavaScript -->
+<script>
+// No code needed here at the moment.
+
+
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+
+<!-- Body -->
+<body>
+<!-- Navigation Code -->
+<ul class="navul">
+  <li class="navli"><a class="active" href="index.html">Home</a></li>
+
+</ul>
+<!-- End Navigation Code -->
+
+<h1> COMING SOON....... </h1>
+<h2 align="center"> No iLLusioN </h2>
+<h3 align="center"><img src="./pics/noilogo.png">   </h3>
+<h3>garyproductions</h3>
+<canvas id="canvas">Canvas is not supported in your browser. </canvas>
+
+
+
+ 
+<script>
+
+
+var canvas = document.getElementById( 'canvas' ),
+		ctx = canvas.getContext( '2d' ),
+
+		// full screen dimensions
+		
+		cw = 1920,
+		ch = 600,
+    charArr = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
+    maxCharCount = 100,
+    fallingCharArr = [],
+    fontSize = 10,
+    maxColums = cw/(fontSize);
+    canvas.width = cw;
+    canvas.height = ch;
+
+
+    function randomInt( min, max ) {
+    	return Math.floor(Math.random() * ( max - min ) + min);
+    }
+
+    function randomFloat( min, max ) {
+    	return Math.random() * ( max - min ) + min;
+    }
+
+    function Point(x,y)
+    {
+      this.x = x;
+      this.y = y;
+    }
+
+    Point.prototype.draw = function(ctx){
+
+      this.value = charArr[randomInt(0,charArr.length-1)].toUpperCase();
+      this.speed = randomFloat(1,5);
+
+
+        ctx.fillStyle = "#0F0";
+        ctx.font = fontSize+"px san-serif";
+        ctx.fillText(this.value,this.x,this.y);
+
+
+
+        this.y += this.speed;
+        if(this.y > ch)
+        {
+          this.y = randomFloat(-100,0);
+          this.speed = randomFloat(2,5);
+        }
+    }
+
+    for(var i = 0; i < maxColums ; i++) {
+      fallingCharArr.push(new Point(i*fontSize,randomFloat(-500,0)));
+    }
+
+
+    var update = function()
+    {
+
+    ctx.fillStyle = "rgba(0,0,0,0.05)";
+    ctx.fillRect(0,0,cw,ch);
+
+
+      var i = fallingCharArr.length;
+
+      while (i--) {
+        fallingCharArr[i].draw(ctx);
+        var v = fallingCharArr[i];
+      }
+
+      requestAnimationFrame(update);
+    }
+
+  update();
+
+
+
+</script>
+
+
+<!-- End of Body -->
+</body>
+</html>
