@@ -18,6 +18,8 @@ v1.2 - Added navigation bar.
 v1.3 - Added new page "Highlights"
 v1.4 - Added new page "Home"
 v1.5 - Restructured site a bit, added external style sheet to mass-edit site when the time comes.
+v2.0 - No longer a Socom 2 soundboard, main page of business site 
+v2.1 - Remvoed the Matrix effect.
 -->
 
 
@@ -58,85 +60,8 @@ v1.5 - Restructured site a bit, added external style sheet to mass-edit site whe
 
 
 
- 
+ <!-- Any Javascript content goes here -->
 <script>
-
-
-var canvas = document.getElementById( 'canvas' ),
-		ctx = canvas.getContext( '2d' ),
-
-		// full screen dimensions
-		
-		cw = 1920,
-		ch = 600,
-    charArr = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'],
-    maxCharCount = 100,
-    fallingCharArr = [],
-    fontSize = 10,
-    maxColums = cw/(fontSize);
-    canvas.width = cw;
-    canvas.height = ch;
-
-
-    function randomInt( min, max ) {
-    	return Math.floor(Math.random() * ( max - min ) + min);
-    }
-
-    function randomFloat( min, max ) {
-    	return Math.random() * ( max - min ) + min;
-    }
-
-    function Point(x,y)
-    {
-      this.x = x;
-      this.y = y;
-    }
-
-    Point.prototype.draw = function(ctx){
-
-      this.value = charArr[randomInt(0,charArr.length-1)].toUpperCase();
-      this.speed = randomFloat(1,5);
-
-
-        ctx.fillStyle = "#0F0";
-        ctx.font = fontSize+"px san-serif";
-        ctx.fillText(this.value,this.x,this.y);
-
-
-
-        this.y += this.speed;
-        if(this.y > ch)
-        {
-          this.y = randomFloat(-100,0);
-          this.speed = randomFloat(2,5);
-        }
-    }
-
-    for(var i = 0; i < maxColums ; i++) {
-      fallingCharArr.push(new Point(i*fontSize,randomFloat(-500,0)));
-    }
-
-
-    var update = function()
-    {
-
-    ctx.fillStyle = "rgba(0,0,0,0.05)";
-    ctx.fillRect(0,0,cw,ch);
-
-
-      var i = fallingCharArr.length;
-
-      while (i--) {
-        fallingCharArr[i].draw(ctx);
-        var v = fallingCharArr[i];
-      }
-
-      requestAnimationFrame(update);
-    }
-
-  update();
-
-
 
 </script>
 
